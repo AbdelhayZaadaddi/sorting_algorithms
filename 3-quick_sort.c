@@ -19,3 +19,41 @@ void swap_values(int **array, ssize_t i1, ssize_t i2)
 	(*array)[i1] = (*array)[i2];
 	(*array)[i2] = tmp;
 }
+
+/**
+ * partition - selects a pivot point in the array
+ *
+ * @array: the array to sort
+ * @lo: the lowest index of the partition to sort
+ * @hi: the highest index of the partition to sort
+ * @size: size of the array
+ *
+ * Return: index of the partition
+ */
+size_t partition(int *array, ssize_t lo, ssize_t hi, size_t size)
+{
+	int pivot;
+	ssize_t i, j;
+
+	pivot = array[hi];
+	i = lo;
+	for (j = lo; j < hi; j++)
+	{
+		if (array[j] < pivot)
+		{
+			if (i != j)
+			{
+				swap_values(&array, i, j);
+				print_array(array, size);
+			}
+			i++;
+		}
+	}
+	if (array[hi] < array[i])
+	{
+		swap_values(&array, i, hi);
+		print_array(array, size);
+	}
+
+	return (i);
+}
