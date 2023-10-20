@@ -78,3 +78,21 @@ void _quick_sort(int *array, ssize_t lo, ssize_t hi, size_t size)
 		_quick_sort(array, pivot + 1, hi, size);
 	}
 }
+
+/**
+ * quick_sort - sorts an array of integers using quicksort
+ *
+ * @array: the array of integers
+ * @size: the size of the array
+ */
+
+void quick_sort(int *array, size_t size)
+{
+	ssize_t lo = 0;
+	ssize_t hi = (size - 1);
+
+	if (!array || size < 2)
+		return;
+
+	_quick_sort(array, lo, hi, size);
+}
