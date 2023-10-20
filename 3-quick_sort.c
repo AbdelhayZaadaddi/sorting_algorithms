@@ -57,3 +57,24 @@ size_t partition(int *array, ssize_t lo, ssize_t hi, size_t size)
 
 	return (i);
 }
+
+/**
+ * _quick_sort - partitions the array, then sorts each partition
+ *
+ * @array: the array to sort
+ * @lo: the lowest index of the partition to sort
+ * @hi: the highest index of the partition to sort
+ * @size: size of the array
+ */
+
+void _quick_sort(int *array, ssize_t lo, ssize_t hi, size_t size)
+{
+	ssize_t pivot;
+
+	if (lo < hi)
+	{
+		pivot = partition(array, lo, hi, size);
+		_quick_sort(array, lo, pivot - 1, size);
+		_quick_sort(array, pivot + 1, hi, size);
+	}
+}
